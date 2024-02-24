@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom";
 import Avatar1 from "../images/avatar1.jpg";
-import Avatar2 from "../images/avatar2.jpg";
-import Avatar3 from "../images/avatar3.jpg";
+import Avatar2 from "../images/avatar8.jpg";
+import Avatar3 from "../images/avatar2.jpg";
 import Avatar4 from "../images/avatar4.jpg";
 import MetaData from "../components/MetaData";
 
 const authorsData = [
-  { id: 1, avatar: Avatar1, name: "Eernest John", posts: 3 },
+  { id: 1, avatar: Avatar1, name: "Amelia Davies", posts: 3 },
   { id: 2, avatar: Avatar2, name: "Robert Cane", posts: 4 },
-  { id: 3, avatar: Avatar3, name: "Paul", posts: 5 },
-  { id: 4, avatar: Avatar4, name: "Carter Garry", posts: 6 },
+  { id: 3, avatar: Avatar3, name: "James Taylor", posts: 5 },
+  { id: 4, avatar: Avatar4, name: "Sarah Fatima", posts: 6 },
 ];
 
 const Authors = () => {

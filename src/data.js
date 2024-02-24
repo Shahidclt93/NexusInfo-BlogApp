@@ -1,5 +1,5 @@
-import Thumbnail1 from "./images/blog10.jpg";
-import Thumbnail2 from "./images/blog11.jpg";
+import Thumbnail1 from "./images/blog24.jpg";
+import Thumbnail2 from "./images/blog8.jpg";
 import Thumbnail3 from "./images/blog13.jpg";
 import Thumbnail4 from "./images/blog14.jpg";
 import Thumbnail5 from "./images/blog15.jpg";
@@ -46,7 +46,7 @@ export const DUMMY_POSTS= [
       category: "art",
       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       desc: "Duis sem lectus, ultricies placerat tortor vel, maximus imperdiet arcu. Praesent in sodales leo, nec mattis eros. Nulla sed ante libero. Mauris fermentum tortor turpis, ac hendrerit tortor congue vel. Vestibulum dignissim diam eget dignissim hendrerit.",
-      authorID: 11,
+      authorID: 13,
     },
     {
       id: 6,
@@ -54,39 +54,39 @@ export const DUMMY_POSTS= [
       category: "art",
       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       desc: "Duis sem lectus, ultricies placerat tortor vel, maximus imperdiet arcu. Praesent in sodales leo, nec mattis eros. Nulla sed ante libero. Mauris fermentum tortor turpis, ac hendrerit tortor congue vel. Vestibulum dignissim diam eget dignissim hendrerit.",
-      authorID: 11,
+      authorID: 20,
     },
     {
-      id: 6,
+      id: 7,
       thumbnail: Thumbnail6,
       category: "Business",
       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       desc: "Duis sem lectus, ultricies placerat tortor vel, maximus imperdiet arcu. Praesent in sodales leo, nec mattis eros. Nulla sed ante libero. Mauris fermentum tortor turpis, ac hendrerit tortor congue vel. Vestibulum dignissim diam eget dignissim hendrerit.",
-      authorID: 11,
+      authorID: 8,
     },
     {
-      id: 7,
+      id: 8,
       thumbnail: Thumbnail7,
       category: "Business",
       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       desc: "Duis sem lectus, ultricies placerat tortor vel, maximus imperdiet arcu. Praesent in sodales leo, nec mattis eros. Nulla sed ante libero. Mauris fermentum tortor turpis, ac hendrerit tortor congue vel. Vestibulum dignissim diam eget dignissim hendrerit.",
-      authorID: 11,
+      authorID: 16,
     },
     {
-      id: 8,
+      id: 9,
       thumbnail: Thumbnail8,
       category: "Education",
       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       desc: "Duis sem lectus, ultricies placerat tortor vel, maximus imperdiet arcu. Praesent in sodales leo, nec mattis eros. Nulla sed ante libero. Mauris fermentum tortor turpis, ac hendrerit tortor congue vel. Vestibulum dignissim diam eget dignissim hendrerit.",
-      authorID: 11,
+      authorID: 15,
     },
     {
-      id: 9,
+      id: 10,
       thumbnail: Thumbnail9,
       category: "Education",
       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       desc: "Duis sem lectus, ultricies placerat tortor vel, maximus imperdiet arcu. Praesent in sodales leo, nec mattis eros. Nulla sed ante libero. Mauris fermentum tortor turpis, ac hendrerit tortor congue vel. Vestibulum dignissim diam eget dignissim hendrerit.",
-      authorID: 11,
+      authorID: 21,
     },
   ];
   
