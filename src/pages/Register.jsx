@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MetaData from "../components/MetaData";
+import { HelmetProvider } from "react-helmet-async";
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -16,47 +17,51 @@ const Register = () => {
   };
 
   return (
-    <section className="register">
-       <MetaData title="Sign Up"/>
-      <div className="container">
-        <h2>Sign Up</h2>
-        <form className="form register__form">
-    
-          <input
-            type="text"
-            placeholder="Full Name"
-            name="name"
-            value={userData.name}
-            onChange={changeInputHandler}
-            autoFocus
-          />
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            value={userData.email}
-            onChange={changeInputHandler}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={userData.password}
-            onChange={changeInputHandler}
-          />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            name="password2"
-            value={userData.password2}
-            onChange={changeInputHandler}
-          />
-          <button type="sumbit" className="btn primary">Register</button>
-       
-        </form>
-        <small>Already have an account? <Link to="/login">sign in</Link></small>
-      </div>
-    </section>
+    <HelmetProvider>
+      <section className="register">
+        <MetaData title="Sign Up" />
+        <div className="container">
+          <h2>Sign Up</h2>
+          <form className="form register__form">
+            <input
+              type="text"
+              placeholder="Full Name"
+              name="name"
+              value={userData.name}
+              onChange={changeInputHandler}
+              autoFocus
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              value={userData.email}
+              onChange={changeInputHandler}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={userData.password}
+              onChange={changeInputHandler}
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="password2"
+              value={userData.password2}
+              onChange={changeInputHandler}
+            />
+            <button type="sumbit" className="btn primary">
+              Register
+            </button>
+          </form>
+          <small>
+            Already have an account? <Link to="/login">sign in</Link>
+          </small>
+        </div>
+      </section>
+    </HelmetProvider>
   );
 };
 

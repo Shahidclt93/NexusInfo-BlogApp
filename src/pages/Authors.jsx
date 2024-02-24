@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Avatar1 from "../images/avatar1.jpg";
 import Avatar2 from "../images/avatar8.jpg";
 import Avatar3 from "../images/avatar2.jpg";
 import Avatar4 from "../images/avatar4.jpg";
 import MetaData from "../components/MetaData";
+import { HelmetProvider } from "react-helmet-async";
 
 const authorsData = [
   { id: 1, avatar: Avatar1, name: "Amelia Davies", posts: 3 },
@@ -16,24 +17,26 @@ const authorsData = [
 const Authors = () => {
   const [authors, setAuthors] = useState(authorsData);
   return (
-    <section className="authors">
-       <MetaData title="Authors"/>
-      <div className="container authors__container">
-        {authors.map(({ id, avatar, name, posts }) => {
-          return (
-            <Link key={id} to={`/post/users/${id}`} className="author">
-              <div className="author__avatar">
-                <img src={avatar} alt={`Image of ${id}`} />
-              </div>
-              <div className="author__info">
-                <h4>{name}</h4>
-                <p>{posts}</p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-    </section>
+    <HelmetProvider>
+      <section className="authors">
+        <MetaData title="Authors" />
+        <div className="container authors__container">
+          {authors.map(({ id, avatar, name, posts }) => {
+            return (
+              <Link key={id} to={`/post/users/${id}`} className="author">
+                <div className="author__avatar">
+                  <img src={avatar} alt={`Image of ${id}`} />
+                </div>
+                <div className="author__info">
+                  <h4>{name}</h4>
+                  <p>{posts}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+    </HelmetProvider>
   );
 };
 

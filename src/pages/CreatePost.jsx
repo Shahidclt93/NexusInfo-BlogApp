@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import MetaData from "../components/MetaData";
+import { HelmetProvider } from "react-helmet-async";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -47,44 +48,46 @@ const CreatePost = () => {
     "Weather",
   ];
   return (
-    <section className="create_post">
-      <MetaData title="Create Post"/>
-      <div className="container">
-        <h2>Create Post</h2>
-        <form className="form create_post__form">
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            autoFocus
-          />
-          <select
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            {POST_CATEGORIES.map((cat) => (
-              <option key={cat}>{cat}</option>
-            ))}
-          </select>
-          <ReactQuill
-            modules={modules}
-            formats={formats}
-            value={description}
-            onChange={setDescription}
-          />
-          <input
-            type="file"
-            onChange={(e) => setThumbnail(e.target.files[0])}
-            accept="png,jpg,jpeg"
-          />
-          <button type="submit" className="btn primary">
-            Create
-          </button>
-        </form>
-      </div>
-    </section>
+    <HelmetProvider>
+      <section className="create_post">
+        <MetaData title="Create Post" />
+        <div className="container">
+          <h2>Create Post</h2>
+          <form className="form create_post__form">
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              autoFocus
+            />
+            <select
+              name="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              {POST_CATEGORIES.map((cat) => (
+                <option key={cat}>{cat}</option>
+              ))}
+            </select>
+            <ReactQuill
+              modules={modules}
+              formats={formats}
+              value={description}
+              onChange={setDescription}
+            />
+            <input
+              type="file"
+              onChange={(e) => setThumbnail(e.target.files[0])}
+              accept="png,jpg,jpeg"
+            />
+            <button type="submit" className="btn primary">
+              Create
+            </button>
+          </form>
+        </div>
+      </section>
+    </HelmetProvider>
   );
 };
 
