@@ -3,24 +3,19 @@ import { Link } from "react-router-dom";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
 import { useDataContext } from "../context/DataContextProvider";
-import { toast } from "react-toastify";
 
 
-const Dashboard = () => {
-  const { data, deletePost } = useDataContext();
-  const handleDelete = (id) => {
-    deletePost(id);
-    toast.success("Post deleted")
-  };
+const MyPosts = () => {
+  const { myPosts } = useDataContext();
   return (
     <HelmetProvider>
       <section className="dashboard">
         <MetaData title="My Posts" />
-        {data.length ? (
+        {myPosts.length ? (
           <div className="container dashboard__container">
-            {data.map((post) => {
+            {myPosts.map((post, index) => {
               return (
-                <article key={post.id} className="dashboard__post">
+                <article key={index} className="dashboard__post">
                   <div className="dashboard_post__info">
                     <div className="dashboard_post__thumbnail">
                       <img src={post.thumbnail} alt="" />
@@ -40,13 +35,9 @@ const Dashboard = () => {
                     >
                       Edit
                     </Link>
-                    <a
-                      href="#"
-                      className="btn danger sm"
-                      onClick={() => handleDelete(post.id)}
-                    >
+                    <Link to={`/posts/${post.id}`} className="btn danger sm">
                       Delete
-                    </a>
+                    </Link>
                   </div>
                 </article>
               );
@@ -60,4 +51,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default MyPosts;

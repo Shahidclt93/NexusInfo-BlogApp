@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
+import { useParams } from "react-router-dom";
+import { useDataContext } from "../context/DataContextProvider";
+import { toBase64 } from "../utils/toBase64";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CreatePost = () => {
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("Uncategorized");
-  const [description, setDescription] = useState("");
-  const [thumbnail, setThumbnail] = useState("");
-
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -47,39 +47,102 @@ const CreatePost = () => {
     "Uncategorized",
     "Weather",
   ];
+
+  const { createPost, data } = useDataContext();
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
+  const [imageFileName, setImageFileName] = useState("");
+  const [post, setPost] = useState({
+    id: "",
+    thumbnail: "",
+    category: "",
+    title: "",
+    desc: "",
+    authorID: "",
+  });
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const base64Image = await toBase64(file);
+      setThumbnail(base64Image);
+      setImageFileName(file.name);
+    }
+  };
+  const dataId = data.map((item, index) => item.id);
+  const random = () => {
+    let uniqueID;
+    const randomNum = Math.floor(Math.random() * 10000);
+    if (!dataId.includes(randomNum)) {
+      uniqueID = randomNum;
+    }
+    return uniqueID;
+  };
+
+  useEffect(() => {
+    setPost({
+      id: random(),
+      thumbnail: thumbnail,
+      category: category,
+      title: title,
+      desc: description,
+      authorID: "50",
+    });
+  }, [id, thumbnail, category, title, description]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (post.title === "" || post.desc === "") {
+      toast.error("Title or description shouldn't be empty");
+    } else {
+      createPost(post);
+      navigate("/");
+      toast.success("Post created");
+    }
+  };
   return (
     <HelmetProvider>
       <section className="create_post">
         <MetaData title="Create Post" />
         <div className="container">
           <h2>Create Post</h2>
-          <form className="form create_post__form">
+          <form className="form create_post__form" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Title"
               value={title}
+              name="title"
               onChange={(e) => setTitle(e.target.value)}
               autoFocus
             />
+            {thumbnail && (
+              <img
+                className="create__post_thumbnail"
+                src={thumbnail}
+                alt="thumbnail"
+              />
+            )}
+            {imageFileName && <span>{imageFileName}</span>}
+
+            <input type="file" name="thumbnail" onChange={handleImageUpload} />
             <select
               name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              {POST_CATEGORIES.map((cat) => (
-                <option key={cat}>{cat}</option>
+              {POST_CATEGORIES.map((item) => (
+                <option key={item}>{item}</option>
               ))}
             </select>
             <ReactQuill
               modules={modules}
               formats={formats}
               value={description}
-              onChange={setDescription}
-            />
-            <input
-              type="file"
-              onChange={(e) => setThumbnail(e.target.files[0])}
-              accept="png,jpg,jpeg"
+              onChange={(e) => setDescription(e)}
             />
             <button type="submit" className="btn primary">
               Create

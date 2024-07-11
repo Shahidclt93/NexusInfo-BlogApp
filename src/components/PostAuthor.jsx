@@ -1,19 +1,20 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-import Avatar from "../images/avatar2.jpg"
+import Avatar from "../assets/images/avatar2.jpg";
+import Profile from "../assets/images/profile.png";
 
-const PostAuthor = () => {
+const PostAuthor = ({ authorID }) => {
   return (
-    <Link to={`/posts/users/dsfsfd`} className="post__author">
-        <div className="post__author_avatar">
-            <img src={Avatar} alt="" />
-        </div>
-        <div className="post__author_details">
-            <h5>By:James Taylor</h5>
-            <small>Just Now</small>
-        </div>
+    <Link to={`/myposts`} className="post__author">
+      <div className="post__author_avatar">
+        <img src={authorID === "50" ? Profile : Avatar} alt="" />
+      </div>
+      <div className="post__author_details">
+        <h5>{`By:${authorID === "50" ? "You" : "James Taylor"}`}</h5>
+        <small>Just Now</small>
+      </div>
     </Link>
-  )
-}
+  );
+};
 
-export default PostAuthor
+export default PostAuthor;

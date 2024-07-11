@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Avatar from "../images/avatar3.jpg";
+import ProfileImg from "../assets/images/profile.png";
 import { FaEdit } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
 
 const UserProfile = () => {
-  const [avatar, setAvatar] = useState(Avatar);
+  const [avatar, setAvatar] = useState(ProfileImg);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
@@ -18,13 +18,13 @@ const UserProfile = () => {
       <section className="profile">
         <MetaData title="Profile" />
         <div className="container profile__container">
-          <Link to={`/myposts/edresag`} className="btn">
+          <Link to={"/myposts"} className="btn">
             My Posts
           </Link>
           <div className="profile__details">
             <div className="avatar__wrapper">
               <div className="profile__avatar">
-                <img src={avatar} alt="" />
+                <img src={ProfileImg} alt="" />
               </div>
 
               <form className="avatar__form">

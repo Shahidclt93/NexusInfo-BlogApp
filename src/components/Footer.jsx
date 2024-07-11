@@ -1,31 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const categories = [
+    "Business",
+    "Education",
+    "Entertainment",
+    "Art",
+    "Investment",
+    "Uncategorized",
+    "Weather",
+  ];
+
   return (
     <footer>
-      <ul className="footer__categories"> 
-        <li>
-          <Link to="/posts/categories/Buisiness">Buisiness</Link>
-        </li>
-        <li>
-          <Link to="/posts/categories/Education">Education</Link>
-        </li>
-        <li>
-          <Link to="/posts/categories/Entertainment">Entertainment</Link>
-        </li>
-        <li>
-          <Link to="/posts/categories/Art">Art</Link>
-        </li>
-        <li>
-          <Link to="/posts/categories/Investment">Investment</Link>
-        </li>
-        <li>
-          <Link to="/post/categories/Uncategorized">Uncategorized</Link>
-        </li>
-        <li>
-          <Link to="/post/categories/Weather">Weather</Link>
-        </li>
+      <ul className="footer__categories">
+        {categories.map((item, index) => (
+          <li key={index}>
+            <a href="#" onClick={() => navigate(`/posts/categories/${item}`)}>
+              {item}
+            </a>
+          </li>
+        ))}
       </ul>
       <div className="footer__copyright">
         <small>All Rights Reserved &copy; Copyright, NexusInfo Blog. </small>
