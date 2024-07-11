@@ -60,7 +60,7 @@ const EditPost = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
-  const [athor, setAthor] = useState("");
+  const [author, setAuthor] = useState("");
   const [imageFileName, setImageFileName] = useState("");
   const [post, setPost] = useState({
     id: "",
@@ -78,7 +78,7 @@ const EditPost = () => {
       setCategory(data.category);
       setDescription(data.desc);
       setThumbnail(data.thumbnail);
-      setAthor(data.authorID);
+      setAuthor(data.authorID);
       setImageFileName(data.thumbnail.split("/").pop());
       setPost(data);
     }

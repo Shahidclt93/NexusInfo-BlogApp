@@ -17,8 +17,6 @@ const CategoryPosts = () => {
     setSelectedCategoryData(getPostByCategory(selectedCategory))
   },[selectedCategory,category])
 
-  // console.log(getPostByCategory(params.category))
-
   const POST_CATEGORIES = [
     "Agriculture",
     "Business",

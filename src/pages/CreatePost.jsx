@@ -74,6 +74,7 @@ const CreatePost = () => {
     }
   };
   const dataId = data.map((item, index) => item.id);
+
   const random = () => {
     let uniqueID;
     const randomNum = Math.floor(Math.random() * 10000);
