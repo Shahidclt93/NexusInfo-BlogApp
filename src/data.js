@@ -15,7 +15,7 @@ export const DUMMY_POSTS = [
     thumbnail: Business1,
     category: "Business",
     title: `Beastie Boys sue Chili's owner over 'Sabotage' ads`,
-    des: `"Sabotage" to promote the Chili's chain without their permission.
+    desc: `"Sabotage" to promote the Chili's chain without their permission.
       The group said in its complaint filed on Wednesday, opens new tab that Brinker unlawfully used "Sabotage" in Chili's social-media ads, falsely implying that the Beastie Boys endorsed the casual-dining restaurants.
       Attorneys for the Beastie Boys and spokespeople for Brinker did not immediately respond to requests for comment on the lawsuit on Thursday.
       The Beastie Boys formed in New York City in 1981 and dissolved in 2012 after founding member Adam "MCA" Yauch died of cancer. They were inducted into the Rock and Roll Hall of Fame earlier that year.
@@ -30,7 +30,7 @@ export const DUMMY_POSTS = [
     thumbnail: Business2,
     category: "Business",
     title: `US weekly jobless claims fall more than expected`,
-    des: ` The number of Americans filing new applications for unemployment benefits dropped more than expected last week, but volatility around this time of the year as automobile manufacturers idle plants for retooling makes it harder to get a clean read on the labor market.
+    desc: ` The number of Americans filing new applications for unemployment benefits dropped more than expected last week, but volatility around this time of the year as automobile manufacturers idle plants for retooling makes it harder to get a clean read on the labor market.
       Initial claims for state unemployment benefits fell 17,000 to a seasonally adjusted 222,000 for the week ended July 6, the lowest level since late May, the Labor Department said on Thursday. Economists polled by Reuters had forecast 236,000 claims in the latest week.
       The claims data included the Independence Day holiday. Claims tend to be volatile around holidays, and auto makers typically shut down assembly plants starting the July 4 week to retool for new models.
 The timing can, however, vary from one manufacturer to the next, which can throw off the model that the government uses to smooth out the data for seasonal fluctuations.
