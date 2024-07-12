@@ -52,7 +52,7 @@ const PostDetail = () => {
           <div className="post_detail__thumbnail">
             <img src={thumbnail} alt="" />
           </div>
-          <div>{HTMLReactParse(desc)}</div>
+          <div className="post_detail__desc">{HTMLReactParse(desc)}</div>
         </div>
         <div
           className={`post_delete ${deleteModal ? "show" : ""}`}

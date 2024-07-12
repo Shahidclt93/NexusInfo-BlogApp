@@ -37,12 +37,12 @@ const WeatherMobile = () => {
     }
     setWeatherImage(getWeatherIcon(wDataAvailable && data.weather[0].id));
   };
-
   return (
     <>
       <div className="weather_mobile">
         <div className="weather_data">
           <div className="top_data">
+            <span>{wDataAvailable && data.name}</span>
             <div className="temp_main">
               {wDataAvailable ? data.main.temp.toFixed(1) : "13"}°C
             </div>

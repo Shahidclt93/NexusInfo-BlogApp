@@ -91,7 +91,7 @@ While this is likely injecting noise into the claims data, signs are mounting th
     thumbnail: Entertainment1,
     category: "Entertainment",
     title: `Sharon Stone lost $18 million in savings after her 2001 stroke`,
-    desc: `n an interview with the The Hollywood Reporter, the actress talked about her 2001 stroke which resulted in a life-threatening brain bleed for nine days and a lengthy recovery.
+    desc: `In an interview with the The Hollywood Reporter, the actress talked about her 2001 stroke which resulted in a life-threatening brain bleed for nine days and a lengthy recovery.
 
       “Everything changed,” Stone said. “My sense of smell, my sight, my touch. I couldn't read for a couple of years. Things were stretched and I was seeing color patterns. A lot of people thought I was going to die.”
       

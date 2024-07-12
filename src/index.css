@@ -267,8 +267,9 @@ nav {
 }
 
 .hero__sub_blogs {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 }
 
 .hero__sub_blog:hover h3 {
@@ -540,8 +541,8 @@ nav {
   overflow: hidden;
 }
 
-.post_detail p {
-  margin-bottom: 0.7rem;
+.post_detail__desc{
+  padding: 0 10px;
 }
 
 /* ************* FOOTER ******************************************* */
@@ -795,21 +796,17 @@ textarea {
 
 @media screen and (max-width: 1000px) {
   .hero__sub_blogs {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 
   .hero__blog_image {
-    height: unset;
+    height: 10rem;
   }
 
   .container {
     width: var(--container-width-md);
   }
 
-  .hero__main_blog_image {
-    min-width: 50%;
-  }
 }
 
 @media screen and (max-width: 800px) {
@@ -877,10 +874,6 @@ textarea {
     height: unset;
   }
 
-  .hero__blogs_container {
-    margin: 0;
-  }
-
   .hero__sub_blogs {
     grid-template-columns: 1fr 1fr;
   }
@@ -910,7 +903,7 @@ textarea {
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    gap: 5px;
+    gap: 8px;
   }
 
   .weather_mobile .top_data img {

@@ -9,7 +9,6 @@ import { toBase64 } from "../utils/toBase64";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-
 const EditPost = () => {
   const navigate = useNavigate();
 
@@ -100,6 +99,7 @@ const EditPost = () => {
       category: category,
       title: title,
       desc: description,
+      authorID: author,
     });
   }, [id, thumbnail, category, title, description]);
 
@@ -112,7 +112,6 @@ const EditPost = () => {
       navigate(`/posts/${id}`);
       toast.success("Post successfully updated");
     }
-   
   };
   return (
     <HelmetProvider>
@@ -129,12 +128,14 @@ const EditPost = () => {
               onChange={(e) => setTitle(e.target.value)}
               autoFocus
             />
-            <img
-              className="create__post_thumbnail"
-              src={thumbnail}
-              alt="thumbnail"
-            />
-            <span>{imageFileName}</span>
+            {thumbnail && (
+              <img
+                className="create__post_thumbnail"
+                src={thumbnail}
+                alt="thumbnail"
+              />
+            )}
+            {imageFileName && <span>{imageFileName}</span>}
             <input type="file" name="thumbnail" onChange={handleImageUpload} />
             <select
               name="category"
