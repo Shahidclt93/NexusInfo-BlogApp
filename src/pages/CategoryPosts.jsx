@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PostItem from "../components/PostItem";
 import { useParams } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import MetaData from "../components/MetaData";
+import Loader from "../Loader/LoaderMain/Loader";
 import { useDataContext } from "../context/DataContextProvider";
 import ScrollToTop from "../components/ScrollToTop";
 
-
 const CategoryPosts = () => {
+  const { category } = useParams();
+  const { getPostByCategory, loading } = useDataContext();
+  const [selectedCategory, setSelectedCategory] = useState(category);
+  const [selectedCategoryData, setSelectedCategoryData] = useState(null);
 
-  const {category} = useParams()
-  const {getPostByCategory} = useDataContext()
- const [selectedCategory, setSelectedCategory] = useState(category)
- const [selectedCategoryData, setSelectedCategoryData] = useState(null)
-
-
-  useEffect(()=>{
-    setSelectedCategoryData(getPostByCategory(selectedCategory))
-  },[selectedCategory,category])
+  useEffect(() => {
+    setSelectedCategoryData(getPostByCategory(selectedCategory));
+  }, [selectedCategory, category]);
 
   const POST_CATEGORIES = [
     "Agriculture",
@@ -26,41 +26,51 @@ const CategoryPosts = () => {
     "Investment",
     "Uncategorized",
     "Weather",
-    "All"
+    "All",
   ];
 
   return (
     <>
-    <ScrollToTop/>
-    <section>
-<div className="category_select">
-
-    <select  name="category" value={selectedCategory} onChange={(e)=> setSelectedCategory(e.target.value)}>
-      {POST_CATEGORIES.map(item=>(
-        <option key={item}>{item}</option>
-
-      ))}
-    </select>
-</div>
-      {selectedCategoryData?.length > 0 ? (
-        <div className="container posts__container_category">
-          {selectedCategoryData?.map(({ id, thumbnail, category, title, desc, authorID }) => (
-            <PostItem
-              key={id}
-              postID={id}
-              thumbnail={thumbnail}
-              category={category}
-              title={title}
-              description={desc}
-              authorID={authorID}
-            />
-          ))}
-         
-        </div>
-      ) : (
-        <h2 className="center">No posts found</h2>
-      )}
-    </section>
+      <HelmetProvider>
+        <MetaData title="Blog Category" />
+        <ScrollToTop />
+        {loading ? (
+          <Loader />
+        ) : (
+          <section>
+            <div className="category_select">
+              <select
+                name="category"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {POST_CATEGORIES.map((item) => (
+                  <option key={item}>{item}</option>
+                ))}
+              </select>
+            </div>
+            {selectedCategoryData?.length > 0 ? (
+              <div className="container posts__container_category">
+                {selectedCategoryData?.map(
+                  ({ id, thumbnail, category, title, desc, authorID }) => (
+                    <PostItem
+                      key={id}
+                      postID={id}
+                      thumbnail={thumbnail}
+                      category={category}
+                      title={title}
+                      description={desc}
+                      authorID={authorID}
+                    />
+                  )
+                )}
+              </div>
+            ) : (
+              <h2 className="center">No posts found</h2>
+            )}
+          </section>
+        )}
+      </HelmetProvider>
     </>
   );
 };

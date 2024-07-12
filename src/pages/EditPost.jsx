@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
+import Loader from "../Loader/LoaderMain/Loader";
 import { useParams } from "react-router-dom";
 import { useDataContext } from "../context/DataContextProvider";
 import { toBase64 } from "../utils/toBase64";
@@ -52,7 +53,7 @@ const EditPost = () => {
     "Weather",
   ];
 
-  const { getPostDetails, editPost } = useDataContext();
+  const { getPostDetails, editPost, loading } = useDataContext();
   const { id } = useParams();
 
   const [title, setTitle] = useState("");
@@ -114,51 +115,61 @@ const EditPost = () => {
     }
   };
   return (
-    <HelmetProvider>
-      <section className="create_post">
+    <>
+      <HelmetProvider>
         <MetaData title="Edit Post" />
-        <div className="container">
-          <h2>Edit Post</h2>
-          <form className="form create_post__form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Title"
-              value={title}
-              name="title"
-              onChange={(e) => setTitle(e.target.value)}
-              autoFocus
-            />
-            {thumbnail && (
-              <img
-                className="create__post_thumbnail"
-                src={thumbnail}
-                alt="thumbnail"
-              />
-            )}
-            {imageFileName && <span>{imageFileName}</span>}
-            <input type="file" name="thumbnail" onChange={handleImageUpload} />
-            <select
-              name="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              {POST_CATEGORIES.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-            <ReactQuill
-              modules={modules}
-              formats={formats}
-              value={description}
-              onChange={(e) => setDescription(e)}
-            />
-            <button type="submit" className="btn primary">
-              Update
-            </button>
-          </form>
-        </div>
-      </section>
-    </HelmetProvider>
+        {loading ? (
+          <Loader />
+        ) : (
+          <section className="create_post">
+            <div className="container">
+              <h2>Edit Post</h2>
+              <form className="form create_post__form" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Title"
+                  value={title}
+                  name="title"
+                  onChange={(e) => setTitle(e.target.value)}
+                  autoFocus
+                />
+                {thumbnail && (
+                  <img
+                    className="create__post_thumbnail"
+                    src={thumbnail}
+                    alt="thumbnail"
+                  />
+                )}
+                {imageFileName && <span>{imageFileName}</span>}
+                <input
+                  type="file"
+                  name="thumbnail"
+                  onChange={handleImageUpload}
+                />
+                <select
+                  name="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  {POST_CATEGORIES.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+                <ReactQuill
+                  modules={modules}
+                  formats={formats}
+                  value={description}
+                  onChange={(e) => setDescription(e)}
+                />
+                <button type="submit" className="btn primary">
+                  Update
+                </button>
+              </form>
+            </div>
+          </section>
+        )}
+      </HelmetProvider>
+    </>
   );
 };
 

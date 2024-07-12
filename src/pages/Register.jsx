@@ -18,8 +18,8 @@ const Register = () => {
 
   return (
     <HelmetProvider>
+      <MetaData title="Sign Up" />
       <section className="register">
-        <MetaData title="Sign Up" />
         <div className="container">
           <h2>Sign Up</h2>
           <form className="form register__form">

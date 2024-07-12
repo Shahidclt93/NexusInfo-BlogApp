@@ -5,7 +5,7 @@ import hazeIcon from "../../assets/weather_icons/haze.svg";
 import rainIcon from "../../assets/weather_icons/rain.svg";
 import snowIcon from "../../assets/weather_icons/snow.svg";
 import stormIcon from "../../assets/weather_icons/storm.svg";
-import Spinner from "../../Loader/Spinner";
+import Spinner from "../../Loader/LoaderWeather/Spinner";
 import { useWeatherContext } from "../../context/WeatherDataProvider";
 
 const WeatherMobile = () => {
@@ -42,7 +42,7 @@ const WeatherMobile = () => {
       <div className="weather_mobile">
         <div className="weather_data">
           <div className="top_data">
-            <span>{wDataAvailable && data.name}</span>
+            <span>{wDataAvailable ? data.name : "kolkata"}</span>
             <div className="temp_main">
               {wDataAvailable ? data.main.temp.toFixed(1) : "13"}°C
             </div>

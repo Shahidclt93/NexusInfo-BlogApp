@@ -5,7 +5,7 @@ import hazeIcon from "../../assets/weather_icons/haze.svg";
 import rainIcon from "../../assets/weather_icons/rain.svg";
 import snowIcon from "../../assets/weather_icons/snow.svg";
 import stormIcon from "../../assets/weather_icons/storm.svg";
-import Spinner from "../../Loader/Spinner";
+import Spinner from "../../Loader/LoaderWeather/Spinner";
 import { useWeatherContext } from "../../context/WeatherDataProvider";
 
 const Weather = () => {

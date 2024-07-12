@@ -3,22 +3,31 @@ import Posts from "../components/Posts";
 import Hero from "../components/Hero";
 import Weather from "../components/weather/Weather";
 import TopHero from "../components/TopHero";
+import Loader from "../Loader/LoaderMain/Loader";
 import WeatherMobile from "../components/weather/WeatherMobile ";
+import { useDataContext } from "../context/DataContextProvider";
 import ScrollToTop from "../components/ScrollToTop";
 
 const Home = () => {
+  const { loading } = useDataContext();
   return (
     <>
-    <ScrollToTop/>
-      <TopHero />
-      <WeatherMobile/>
-      <div className="container" style={{ display: "flex" }}>
+      <ScrollToTop />
+      {loading ? (
+        <Loader />
+      ) : (
         <div>
-          <Hero />
-          <Posts />
+          <TopHero />
+          <WeatherMobile />
+          <div className="container" style={{ display: "flex" }}>
+            <div>
+              <Hero />
+              <Posts />
+            </div>
+            <Weather />
+          </div>
         </div>
-        <Weather />
-      </div>
+      )}
     </>
   );
 };

@@ -18,8 +18,8 @@ const Authors = () => {
   const [authors, setAuthors] = useState(authorsData);
   return (
     <HelmetProvider>
+      <MetaData title="Authors" />
       <section className="authors">
-        <MetaData title="Authors" />
         <div className="container authors__container">
           {authors.map(({ id, avatar, name, posts }) => {
             return (

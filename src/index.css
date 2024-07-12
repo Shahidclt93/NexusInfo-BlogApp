@@ -541,7 +541,7 @@ nav {
   overflow: hidden;
 }
 
-.post_detail__desc{
+.post_detail__desc {
   padding: 0 10px;
 }
 
@@ -783,13 +783,24 @@ textarea {
 
 .dashboard_post__thumbnail {
   width: 4rem;
+  height: 3rem;
   border-radius: var(--radius-1);
   overflow: hidden;
+}
+
+.dashboard_post__thumbnail img {
+  width: 100%;
+  height: 100%;
 }
 
 .dashboard_post__actions {
   display: flex;
   gap: 1rem;
+}
+
+.dashboard_post__actions a {
+  font-size: 0.9rem;
+  margin: auto 0;
 }
 
 /* ************* Small devices - MEDIA QUERIES ******************************************* */
