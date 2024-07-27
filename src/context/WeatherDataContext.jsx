@@ -34,7 +34,6 @@ const WeatherDataContextProvider = ({ children }) => {
       );
       const result = await response.json();
       setData(result);
-      localStorage.setItem("weatherData", JSON.stringify(data));
     } catch (error) {
       console.log(error);
     } finally {
@@ -53,6 +52,10 @@ const WeatherDataContextProvider = ({ children }) => {
   };
 
   const wDataAvailable = Object.keys(data).length !== 0;
+  useEffect(() => {
+    setWeatherImage(getWeatherIcon(wDataAvailable && data.weather[0].id));
+    localStorage.setItem("weatherData", JSON.stringify(data));
+  }, [data]);
 
   const handleWeatherUpdate = () => {
     setLoading(true);
@@ -65,10 +68,6 @@ const WeatherDataContextProvider = ({ children }) => {
       fetchData(location.lat, location.lon);
     }
   };
-
-  useEffect(() => {
-    setWeatherImage(getWeatherIcon(wDataAvailable && data.weather[0].id));
-  }, [data]);
 
   return (
     <WeatherContext.Provider
