@@ -22,9 +22,15 @@ const WeatherDataContextProvider = ({ children }) => {
   const [data, setData] = useState(
     localStorageWeatherData ? localStorageWeatherData : []
   );
-  const [location, setLocation] = useState({ lat: null, lon: null });
   const [loading, setLoading] = useState(false);
   const [weatherImage, setWeatherImage] = useState(cloudIcon);
+
+  const handleWeatherUpdate = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      fetchData(latitude, longitude);
+    });
+  };
 
   const fetchData = useCallback(async (lat, lon) => {
     setLoading(true);
@@ -52,32 +58,18 @@ const WeatherDataContextProvider = ({ children }) => {
   };
 
   const wDataAvailable = Object.keys(data).length !== 0;
+
   useEffect(() => {
     setWeatherImage(getWeatherIcon(wDataAvailable && data.weather[0].id));
     localStorage.setItem("weatherData", JSON.stringify(data));
   }, [data]);
-
-  const handleWeatherUpdate = () => {
-    setLoading(true);
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      setLocation({ lat: latitude, lon: longitude });
-      fetchData(latitude, longitude);
-    });
-    if (location.lat && location.lon) {
-      fetchData(location.lat, location.lon);
-    }
-  };
 
   return (
     <WeatherContext.Provider
       value={{
         fetchData,
         data,
-        setLocation,
-        location,
         loading,
-        setLoading,
         handleWeatherUpdate,
         weatherImage,
       }}

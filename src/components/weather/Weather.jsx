@@ -1,19 +1,10 @@
 import React from "react";
-import cloudIcon from "../../assets/weather_icons/cloud.svg";
 import Spinner from "../loader/LoaderWeather/Spinner";
 import { useWeatherContext } from "../../context/WeatherDataContext";
 
 const Weather = () => {
-  const {
-    fetchData,
-    data,
-    setLocation,
-    location,
-    loading,
-    setLoading,
-    weatherImage,
-    handleWeatherUpdate,
-  } = useWeatherContext();
+  const { data, loading, weatherImage, handleWeatherUpdate } =
+    useWeatherContext();
 
   const wDataAvailable = Object.keys(data).length !== 0;
 
@@ -24,20 +15,19 @@ const Weather = () => {
           {loading ? (
             <Spinner />
           ) : (
-            <a
-              href="#0"
+            <span
               onClick={() => {
                 handleWeatherUpdate();
               }}
             >
               <i className="bx bx-refresh"></i>
-            </a>
+            </span>
           )}
         </div>
 
         <div className="weather_data">
           <div className="top_data">
-            <img src={wDataAvailable ? weatherImage : cloudIcon} alt="" />
+            <img src={weatherImage} alt="weather mobile" />
             <div className="temp_main">
               {wDataAvailable ? data.main.temp.toFixed(1) : "13"}°C
             </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import cloudIcon from "../../assets/weather_icons/cloud.svg";
 import Spinner from "../loader/LoaderWeather/Spinner";
 import { useWeatherContext } from "../../context/WeatherDataContext";
 
@@ -17,23 +16,18 @@ const WeatherMobile = () => {
             <div className="temp_main">
               {wDataAvailable ? data.main.temp.toFixed(1) : "13"}°C
             </div>
-            <img
-              src={wDataAvailable ? weatherImage : cloudIcon}
-              alt="weather-image"
-            />
+            <img src={weatherImage} alt="weather" />
             <div className="refresh">
-              {" "}
               {loading ? (
                 <Spinner />
               ) : (
-                <a
-                  href="#0"
+                <span
                   onClick={() => {
                     handleWeatherUpdate();
                   }}
                 >
                   <i className="bx bx-refresh"></i>
-                </a>
+                </span>
               )}
             </div>
           </div>

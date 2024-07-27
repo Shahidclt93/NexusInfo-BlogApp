@@ -326,6 +326,10 @@ nav {
   font-size: 25px;
 }
 
+.weather .refresh span {
+  cursor: pointer;
+}
+
 .weather_data {
   padding-top: 20px;
 }
