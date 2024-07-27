@@ -1,5 +1,5 @@
 import React from "react";
-import { useDataContext } from "../context/DataContextProvider";
+import { useDataContext } from "../context/DataContext";
 import { Link } from "react-router-dom";
 import { stripHtml } from "../utils/stripHtml";
 

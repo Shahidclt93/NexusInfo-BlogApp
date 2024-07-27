@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
 import { useParams } from "react-router-dom";
-import { useDataContext } from "../context/DataContextProvider";
+import { useDataContext } from "../context/DataContext";
 import { toBase64 } from "../utils/toBase64";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

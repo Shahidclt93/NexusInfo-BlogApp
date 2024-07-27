@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
-import Loader from "../Loader/LoaderMain/Loader";
-import { useDataContext } from "../context/DataContextProvider";
+import Loader from "../components/loader/LoaderMain/Loader";
+import { useDataContext } from "../context/DataContext";
 import { toast } from "react-toastify";
 
 const Dashboard = () => {

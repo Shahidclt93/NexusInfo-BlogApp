@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Loader from "../Loader/LoaderMain/Loader";
+import Loader from "../components/loader/LoaderMain/Loader";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
-import { useDataContext } from "../context/DataContextProvider";
+import { useDataContext } from "../context/DataContext";
 
 const MyPosts = () => {
   const { myPosts, loading } = useDataContext();

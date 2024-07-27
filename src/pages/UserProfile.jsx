@@ -5,8 +5,8 @@ import { FaEdit } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import MetaData from "../components/MetaData";
 import { HelmetProvider } from "react-helmet-async";
-import Loader from "../Loader/LoaderMain/Loader";
-import { useDataContext } from "../context/DataContextProvider";
+import Loader from "../components/loader/LoaderMain/Loader";
+import { useDataContext } from "../context/DataContext";
 
 const UserProfile = () => {
   const { loading } = useDataContext();

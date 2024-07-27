@@ -4,8 +4,8 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import MetaData from "./MetaData";
 import { HelmetProvider } from "react-helmet-async";
-import DataContextProvider from "../context/DataContextProvider";
-import WeatherDataProvider from "../context/WeatherDataProvider";
+import DataContextProvider from "../context/DataContext";
+import WeatherDataContextProvider from "../context/WeatherDataContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,12 +14,12 @@ const Layout = () => {
     <HelmetProvider>
       <MetaData title="NexusInfo" />
       <DataContextProvider>
-        <WeatherDataProvider>
-        <ToastContainer position="bottom-center" autoClose={3000}/>
+        <WeatherDataContextProvider>
+          <ToastContainer position="bottom-center" autoClose={3000} />
           <Header />
           <Outlet />
           <Footer />
-        </WeatherDataProvider>
+        </WeatherDataContextProvider>
       </DataContextProvider>
     </HelmetProvider>
   );

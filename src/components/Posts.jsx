@@ -1,6 +1,6 @@
 import React from "react";
 import PostItem from "./PostItem";
-import { useDataContext } from "../context/DataContextProvider";
+import { useDataContext } from "../context/DataContext";
 
 const Posts = () => {
   const { loading, data } = useDataContext();
